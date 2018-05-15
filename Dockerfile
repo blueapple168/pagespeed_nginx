@@ -4,7 +4,7 @@ LABEL description="nginx-v1.14,pagespeed-v1.13.35.2,openjdk1.8.0"
 
 # Set zh_CN timezone
 RUN yum -y update; yum clean all \
-	&& yum install -y java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel.x86_64 gcc-c++ pcre-devel zlib-devel make unzip libuuid-devel cmake \
+	&& yum install -y gcc-c++ pcre-devel zlib-devel make unzip libuuid-devel cmake \
 	&& yum clean all \
 	&& cp -r -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 	&& yum install -y http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm \
@@ -18,10 +18,6 @@ RUN yum -y update; yum clean all \
 
 COPY ./conf.d /etc/nginx/conf.d
 COPY ./nginx.conf /etc/nginx/nginx.conf
-
-# Set java environment
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk.x86_64
-ENV PATH $PATH:/usr/lib/jvm/java-1.8.0-openjdk.x86_64/jre/bin:/usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin
 
 VOLUME ["/var/cache/ngx_pagespeed"]
 EXPOSE 80 443
