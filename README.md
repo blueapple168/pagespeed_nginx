@@ -1,16 +1,16 @@
 # Docker for ngx_pagespeed
-pagespeed：1.13.35.2  
+  pagespeed：1.13.35.2  
 
-nginx：1.14  
+  nginx：1.14  
 
-Centos：7
+  Centos：7
 
 
-Using the Dockerfile
+## Using the Dockerfile
 
-Use docker build command to build an image from dockerfile:
+### Use docker build command to build an image from dockerfile:
   $ docker build -t <image_tag> -f <dockerfile_path> .
-Refer this for additional options.
+ Refer this for additional options.
 
-Run this container as an independent service:
-$ docker run -d -p 80:80 <image_tag>
+### Run this container as an independent service:
+  $ docker run -d -p 80:80 <image_tag>
